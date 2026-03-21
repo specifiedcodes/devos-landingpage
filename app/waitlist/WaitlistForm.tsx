@@ -10,13 +10,31 @@ export function WaitlistForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [error, setError] = useState('');
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate API call — replace with actual waitlist endpoint
-    await new Promise((r) => setTimeout(r, 1500));
-    setSubmitted(true);
-    setLoading(false);
+    setError('');
+
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, role }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Something went wrong');
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || 'Failed to join waitlist. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -84,6 +102,10 @@ export function WaitlistForm() {
           <option value="other" className="bg-gray-900">Other</option>
         </select>
       </div>
+
+      {error && (
+        <p className="text-red-400 text-sm text-center">{error}</p>
+      )}
 
       <button
         type="submit"
