@@ -1,0 +1,16 @@
+{
+  "name": "DevOS - AI-Powered Development Platform",
+  "short_name": "DevOS",
+  "description": "Build software with autonomous AI agents",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
