@@ -58,9 +58,9 @@ export default function Home() {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up animate-delay-200">
-            Four specialized AI agents — Planner, Developer, QA, and DevOps — work autonomously
-            through complete development cycles. From architecture to deployment, watch your
-            ideas become production-ready software.
+            Create, customize, and orchestrate autonomous AI agents that work in coordination —
+            from planning to deployment. Build your own agents, share them on the marketplace,
+            and watch entire development cycles run themselves.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animate-delay-300">
@@ -111,7 +111,7 @@ export default function Home() {
             <GlassCard
               icon={<Bot className="h-5 w-5" />}
               title="Super Orchestrator"
-              description="Four AI agents (Planner, Developer, QA, DevOps) work autonomously through BMAD cycles — plan, code, test, and deploy without manual intervention."
+              description="Coordinate unlimited AI agents through autonomous development cycles. Agents plan, code, test, and deploy — handing off work to each other without manual intervention."
             />
             <GlassCard
               icon={<Eye className="h-5 w-5" />}
@@ -146,14 +146,39 @@ export default function Home() {
       <section id="agents" className="relative py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <SectionHeader
-            title="Meet Your AI Team"
-            subtitle="Four specialized agents collaborate through every phase of the software development lifecycle."
+            title="Autonomous Agent Orchestration"
+            subtitle="Build custom AI agents or use built-in ones — they coordinate with each other autonomously through every phase of development."
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+          {/* Built-in agents */}
+          <p className="text-xs font-code text-gray-500 uppercase tracking-widest text-center mb-6">Built-in Agents</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <AgentCard name="Planner" role="Architecture & Planning" description="Designs system architecture, creates PRDs, breaks epics into stories, and plans sprint execution." color="indigo" icon={<Brain className="h-6 w-6" />} />
             <AgentCard name="Developer" role="Code Implementation" description="Writes production-ready code following TDD, manages branches, creates PRs, and handles git workflows." color="emerald" icon={<Code2 className="h-6 w-6" />} />
             <AgentCard name="QA" role="Testing & Quality" description="Runs automated tests, performs code review, ensures 80%+ coverage, and validates acceptance criteria." color="amber" icon={<Shield className="h-6 w-6" />} />
             <AgentCard name="DevOps" role="Deploy & Infrastructure" description="Provisions databases, deploys to Railway, manages domains, handles env vars, and monitors health." color="rose" icon={<Rocket className="h-6 w-6" />} />
+          </div>
+
+          {/* Custom agent platform */}
+          <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-8 text-center">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-10 w-10 rounded-xl bg-cyan-500/15 flex items-center justify-center">
+                <Sparkles className="h-5 w-5 text-cyan-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-white">Build Your Own Agents</h3>
+            </div>
+            <p className="text-sm text-gray-400 max-w-xl mx-auto mb-6">
+              Create specialized agents with custom prompts, tools, and behaviors. Test them in isolated sandbox environments,
+              then publish to the marketplace for others to use. Agents coordinate autonomously —
+              assign tasks, hand off work, review each other&apos;s output, and escalate when needed.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-code text-gray-500">
+              <span className="px-3 py-1 rounded-full border border-white/10 bg-white/[0.03]">Custom Prompts & Tools</span>
+              <span className="px-3 py-1 rounded-full border border-white/10 bg-white/[0.03]">Sandbox Testing</span>
+              <span className="px-3 py-1 rounded-full border border-white/10 bg-white/[0.03]">Agent Marketplace</span>
+              <span className="px-3 py-1 rounded-full border border-white/10 bg-white/[0.03]">Multi-Agent Coordination</span>
+              <span className="px-3 py-1 rounded-full border border-white/10 bg-white/[0.03]">Knowledge Graphs</span>
+            </div>
           </div>
         </div>
       </section>
@@ -269,7 +294,7 @@ export default function Home() {
             </h2>
             <p className="text-gray-400 mb-8 max-w-lg mx-auto">
               Be the first to experience autonomous AI development.
-              Join the waitlist — your AI team is almost ready.
+              Build your own agents, orchestrate entire workflows, and ship faster than ever.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
