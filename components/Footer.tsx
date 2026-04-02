@@ -45,6 +45,7 @@ const footerSections = [
   {
     title: 'Company',
     links: [
+      { label: 'Blog', href: '/blog' },
       { label: 'Contact Sales', href: '/contact' },
       { label: 'Support', href: 'mailto:support@devos.team' },
       { label: 'Join Waitlist', href: '/waitlist' },

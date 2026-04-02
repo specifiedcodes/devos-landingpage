@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/#deploy', label: 'Deploy' },
   { href: '/#security', label: 'Security' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/blog', label: 'Blog' },
 ];
 
 export function Navbar() {
