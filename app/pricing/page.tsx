@@ -8,6 +8,61 @@ export const metadata: Metadata = {
   title: 'Pricing',
   description:
     'Simple, transparent pricing for DevOS. Free tier for individuals, Pro for startups, Team for growing companies, and Enterprise for custom deployments.',
+  keywords: ['AI development pricing', 'DevOS plans', 'AI agent subscription', 'developer tools pricing'],
+  alternates: { canonical: 'https://devos.team/pricing' },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: 'DevOS Pricing - Free, Pro, Team & Enterprise Plans',
+    description:
+      'Simple, transparent pricing for DevOS. Free tier for individuals, Pro for startups, Team for growing companies.',
+    url: 'https://devos.team/pricing',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'DevOS Pricing Plans', type: 'image/png' }],
+  },
+  twitter: {
+    title: 'DevOS Pricing - Free, Pro, Team & Enterprise Plans',
+    description: 'Simple, transparent pricing for DevOS.',
+    images: ['/og-image.png'],
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://devos.team' },
+    { '@type': 'ListItem', position: 2, name: 'Pricing', item: 'https://devos.team/pricing' },
+  ],
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is DevOS free to use?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, DevOS offers a free tier with up to 2 AI agents, 1 active project, and 50 development tasks per month.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is included in the Pro plan?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The Pro plan at $25/user/month includes unlimited AI agents, unlimited projects, Railway deployment, Slack & Discord integrations, and live code streaming.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does DevOS offer self-hosted deployment?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, the Enterprise plan includes self-hosted deployment, white-label branding, BYOK encryption, and custom SLA with 99.99% uptime.',
+      },
+    },
+  ],
 };
 
 const tiers = [
@@ -97,6 +152,8 @@ const tiers = [
 export default function PricingPage() {
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* Ambient */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="orb w-[500px] h-[500px] bg-indigo-500/15 top-[-10%] right-[-5%]" />

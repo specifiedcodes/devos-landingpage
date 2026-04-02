@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Sign Up',
   description: 'Create your DevOS account and start building with AI agents.',
+  robots: { index: false, follow: false },
 };
 
 export default function RegisterPage() {

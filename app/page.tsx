@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   Bot,
@@ -30,9 +31,90 @@ import { GlassCard } from '@/components/GlassCard';
 import { AnimatedTerminal } from '@/components/AnimatedTerminal';
 import { AnimatedKanban } from '@/components/AnimatedKanban';
 
+export const metadata: Metadata = {
+  description:
+    'Build software with autonomous AI agents. Four specialized agents — Planner, Developer, QA, and DevOps — work through complete development cycles. From architecture to production deployment.',
+  keywords: [
+    'AI development platform',
+    'autonomous AI agents',
+    'AI code generation',
+    'AI software development',
+  ],
+  alternates: { canonical: 'https://devos.team' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  openGraph: {
+    title: 'DevOS - Build Software with Autonomous AI Agents',
+    description:
+      'Four specialized AI agents autonomously plan, code, test, and deploy your software. From idea to production in minutes.',
+    url: 'https://devos.team',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'DevOS - AI-Powered Development Platform',
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    title: 'DevOS - Build Software with Autonomous AI Agents',
+    description:
+      'Four specialized AI agents autonomously plan, code, test, and deploy your software.',
+    images: ['/og-image.png'],
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://devos.team/#organization',
+      name: 'DevOS',
+      url: 'https://devos.team',
+      logo: { '@type': 'ImageObject', url: 'https://devos.team/icon.svg' },
+      description: 'AI-powered development platform with autonomous agents',
+      parentOrganization: {
+        '@type': 'Organization',
+        name: 'Velocity Digital Labs LLC',
+        url: 'https://velocitydigitallabs.com',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://devos.team/#website',
+      url: 'https://devos.team',
+      name: 'DevOS',
+      publisher: { '@id': 'https://devos.team/#organization' },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'DevOS',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Web',
+      description:
+        'Build software with autonomous AI agents. Four specialized agents work through complete development cycles.',
+      url: 'https://devos.team',
+      author: { '@id': 'https://devos.team/#organization' },
+      offers: {
+        '@type': 'AggregateOffer',
+        lowPrice: '0',
+        highPrice: '299',
+        priceCurrency: 'USD',
+        offerCount: 4,
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Ambient orbs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="orb w-[600px] h-[600px] bg-indigo-500/15 top-[-15%] left-[-5%]" />

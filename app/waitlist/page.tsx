@@ -8,11 +8,36 @@ export const metadata: Metadata = {
   title: 'Join the Waitlist',
   description:
     'Be the first to experience DevOS — AI-powered development with autonomous agents. Sign up for early access.',
+  keywords: ['DevOS early access', 'AI dev platform beta', 'join waitlist', 'developer waitlist'],
+  alternates: { canonical: 'https://devos.team/waitlist' },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: 'Join the DevOS Waitlist - Early Access to AI Development',
+    description:
+      'Be the first to build software with autonomous AI agents. Sign up for early access to DevOS.',
+    url: 'https://devos.team/waitlist',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Join the DevOS Waitlist', type: 'image/png' }],
+  },
+  twitter: {
+    title: 'Join the DevOS Waitlist - Early Access to AI Development',
+    description: 'Be the first to build software with autonomous AI agents.',
+    images: ['/og-image.png'],
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://devos.team' },
+    { '@type': 'ListItem', position: 2, name: 'Waitlist', item: 'https://devos.team/waitlist' },
+  ],
 };
 
 export default function WaitlistPage() {
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="orb w-[500px] h-[500px] bg-indigo-500/15 top-[10%] left-[-5%]" />
         <div className="orb w-[400px] h-[400px] bg-purple-500/10 bottom-[10%] right-[-5%]" />
@@ -29,10 +54,10 @@ export default function WaitlistPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Join the Waitlist
           </h1>
-          <p className="text-gray-400 text-lg mb-10">
+          <h2 className="text-gray-400 text-lg mb-10 font-normal">
             Be among the first to build software with autonomous AI agents.
             We&#39;ll notify you when early access opens.
-          </p>
+          </h2>
 
           <WaitlistForm />
 

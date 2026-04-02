@@ -7,11 +7,50 @@ export const metadata: Metadata = {
   title: 'Contact Sales',
   description:
     'Get in touch with DevOS for enterprise solutions, self-hosted deployments, white-label branding, and reseller licensing.',
+  keywords: ['DevOS enterprise', 'contact DevOS', 'enterprise AI development', 'self-hosted deployment'],
+  alternates: { canonical: 'https://devos.team/contact' },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: 'Contact DevOS Sales - Enterprise & Self-Hosted Solutions',
+    description:
+      'Get in touch for enterprise solutions, self-hosted deployments, white-label branding, and reseller licensing.',
+    url: 'https://devos.team/contact',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Contact DevOS Sales', type: 'image/png' }],
+  },
+  twitter: {
+    title: 'Contact DevOS Sales - Enterprise & Self-Hosted Solutions',
+    description: 'Enterprise solutions, self-hosted deployments, and white-label branding.',
+    images: ['/og-image.png'],
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://devos.team' },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://devos.team/contact' },
+  ],
+};
+
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact DevOS Sales',
+  url: 'https://devos.team/contact',
+  mainEntity: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: 'admin@devos.team',
+    url: 'https://devos.team/contact',
+  },
 };
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }} />
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="orb w-[400px] h-[400px] bg-indigo-500/10 top-[20%] right-[10%]" />
       </div>
@@ -32,7 +71,7 @@ export default function ContactPage() {
               <div className="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
                 <Mail className="h-5 w-5" />
               </div>
-              <h3 className="font-semibold text-white mb-2">General Inquiries</h3>
+              <h2 className="font-semibold text-white mb-2">General Inquiries</h2>
               <p className="text-sm text-gray-400 mb-3">For questions about DevOS, pricing, or features.</p>
               <a
                 href="mailto:admin@devos.team"
@@ -46,7 +85,7 @@ export default function ContactPage() {
               <div className="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
                 <Building2 className="h-5 w-5" />
               </div>
-              <h3 className="font-semibold text-white mb-2">Enterprise & Support</h3>
+              <h2 className="font-semibold text-white mb-2">Enterprise & Support</h2>
               <p className="text-sm text-gray-400 mb-3">For self-hosted, white-label, and technical support.</p>
               <a
                 href="mailto:support@devos.team"
@@ -58,7 +97,7 @@ export default function ContactPage() {
           </div>
 
           <div className="rounded-2xl glass-strong p-8 text-center">
-            <h3 className="text-xl font-semibold text-white mb-3">Enterprise Solutions</h3>
+            <h2 className="text-xl font-semibold text-white mb-3">Enterprise Solutions</h2>
             <ul className="text-sm text-gray-400 space-y-2 mb-6">
               <li>Self-hosted on your own infrastructure</li>
               <li>Full white-label branding (logo, colors, domain, emails)</li>

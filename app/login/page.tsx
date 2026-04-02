@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Sign In',
   description: 'Sign in to your DevOS account.',
+  robots: { index: false, follow: false },
 };
 
 export default function LoginPage() {
