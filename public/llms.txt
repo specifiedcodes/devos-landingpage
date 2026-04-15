@@ -1,0 +1,32 @@
+# DevOS
+> AI-powered development platform with autonomous AI agents for planning, coding, testing, and deployment.
+
+## What it does
+DevOS provides a team of AI agents that work through complete software development cycles. Four built-in agents (Planner, Developer, QA, DevOps) handle everything from architecture planning to production deployment, with built-in collaboration tools and observability.
+
+## Key Features
+- 4 built-in AI agents: Planner, Developer, QA, DevOps
+- Custom agent builder and marketplace
+- Live code streaming
+- Three-tier memory system for context persistence
+- Multi-model routing (use different LLMs for different tasks)
+- GitHub integration with Kanban boards
+- One-click deployment (Railway, custom domains, databases)
+- Enterprise security (BYOK encryption, SSO/SAML, RBAC)
+- Full observability (Prometheus, Grafana, Loki, Jaeger)
+
+## Use Cases
+- Solo developers wanting an AI development team
+- Startups accelerating development velocity
+- Agencies building client projects faster
+- Enterprise teams augmenting existing workflows
+
+## Status
+- Currently in early access / waitlist phase
+
+## Competitors
+- GitHub Copilot Workspace, Cursor, Replit Agent, Devin
+
+## Company
+- Built by Velocity Digital Labs (velocitydigitallabs.com)
+- Website: https://devos.team
