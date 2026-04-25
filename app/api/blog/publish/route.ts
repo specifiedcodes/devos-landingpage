@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
     seoTitle,
     seoDescription,
     published = true,
+    overwrite = false,
   } = body as {
     title?: string;
     slug?: string;
@@ -56,6 +57,7 @@ export async function POST(request: NextRequest) {
     seoTitle?: string;
     seoDescription?: string;
     published?: boolean;
+    overwrite?: boolean;
   };
 
   if (!title || !slug || !content || !date || !author || !category) {
@@ -73,9 +75,10 @@ export async function POST(request: NextRequest) {
   }
 
   const filePath = path.join(CONTENT_DIR, `${slug}.mdx`);
-  if (fs.existsSync(filePath)) {
+  const exists = fs.existsSync(filePath);
+  if (exists && !overwrite) {
     return NextResponse.json(
-      { success: false, error: `Post with slug "${slug}" already exists` },
+      { success: false, error: `Post with slug "${slug}" already exists. Pass overwrite: true to update.` },
       { status: 409 },
     );
   }
@@ -113,5 +116,6 @@ export async function POST(request: NextRequest) {
     success: true,
     url: `/blog/${slug}`,
     file: `${slug}.mdx`,
+    overwritten: exists,
   });
 }
