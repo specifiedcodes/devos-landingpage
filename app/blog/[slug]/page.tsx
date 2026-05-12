@@ -31,6 +31,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = meta.seoDescription || meta.excerpt;
   const url = `https://devos.team/blog/${slug}`;
 
+  // Always resolve cover image to an absolute URL so social scrapers
+  // (LinkedIn, Facebook, Twitter, Slack) can fetch it reliably.
+  const rawCover = meta.coverImage || '/og-default.png';
+  const coverImage = rawCover.startsWith('http')
+    ? rawCover
+    : `https://devos.team${rawCover.startsWith('/') ? '' : '/'}${rawCover}`;
+
   return {
     title,
     description,
@@ -41,12 +48,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       url,
+      siteName: 'DevOS',
       publishedTime: meta.date,
       authors: [meta.author],
+      section: meta.category,
       tags: meta.tags,
       images: [
         {
-          url: meta.coverImage || '/og-image.png',
+          url: coverImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -55,9 +64,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ],
     },
     twitter: {
+      card: 'summary_large_image',
       title,
       description,
-      images: [meta.coverImage || '/og-image.png'],
+      images: [coverImage],
     },
   };
 }
