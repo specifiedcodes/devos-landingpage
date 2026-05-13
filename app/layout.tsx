@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://devos.team"),
   title: {
-    default: "DevOS - Build Software with Autonomous AI Agents",
+    default: "DevOS - Build, Test & Deploy with Autonomous AI Agents",
     template: "%s | DevOS",
   },
   description:

@@ -43,25 +43,17 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://devos.team' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   openGraph: {
-    title: 'DevOS - Build Software with Autonomous AI Agents',
+    title: 'DevOS - Build, Test & Deploy with Autonomous AI Agents',
     description:
       'Four specialized AI agents autonomously plan, code, test, and deploy your software. From idea to production in minutes.',
     url: 'https://devos.team',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'DevOS - AI-Powered Development Platform',
-        type: 'image/png',
-      },
-    ],
+    // og:image emitted automatically from colocated opengraph-image.tsx
   },
   twitter: {
-    title: 'DevOS - Build Software with Autonomous AI Agents',
+    card: 'summary_large_image',
+    title: 'DevOS - Build, Test & Deploy with Autonomous AI Agents',
     description:
       'Four specialized AI agents autonomously plan, code, test, and deploy your software.',
-    images: ['/og-image.png'],
   },
 };
 
