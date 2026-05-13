@@ -5,7 +5,9 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { getAllPosts, getAllCategories } from '@/lib/blog';
 
-export const dynamic = 'force-dynamic';
+// ISR over force-dynamic — gives cacheable headers for crawlers/scrapers.
+// New posts appear within the revalidation window.
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Blog',

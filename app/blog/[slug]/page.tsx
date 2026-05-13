@@ -14,7 +14,11 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export const dynamic = 'force-dynamic';
+// Use ISR (revalidate every 60s) instead of force-dynamic so the HTML
+// response gets cacheable headers — necessary for Facebook's scraper to
+// reliably embed the og:image. New posts published via /api/blog/publish
+// will appear within the revalidation window.
+export const revalidate = 60;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
@@ -31,12 +35,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = meta.seoDescription || meta.excerpt;
   const url = `https://devos.team/blog/${slug}`;
 
-  // Always resolve cover image to an absolute URL so social scrapers
-  // (LinkedIn, Facebook, Twitter, Slack) can fetch it reliably.
-  const rawCover = meta.coverImage || '/og-default.png';
-  const coverImage = rawCover.startsWith('http')
-    ? rawCover
-    : `https://devos.team${rawCover.startsWith('/') ? '' : '/'}${rawCover}`;
+  // Note: openGraph.images and twitter.images are intentionally omitted here.
+  // Next.js auto-detects the colocated opengraph-image.tsx and emits a
+  // per-post 1200x630 og:image + twitter:image automatically.
 
   return {
     title,
@@ -53,21 +54,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: [meta.author],
       section: meta.category,
       tags: meta.tags,
-      images: [
-        {
-          url: coverImage,
-          width: 1200,
-          height: 630,
-          alt: title,
-          type: 'image/png',
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [coverImage],
     },
   };
 }
