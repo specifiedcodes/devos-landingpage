@@ -1,31 +1,28 @@
 # DevOS
-> AI-powered development platform with autonomous AI agents for planning, coding, testing, and deployment.
+> AI agents marketplace + agile project management tool where the AI agents work as employees inside your sprints, standups, and tickets.
 
-## What it does
-DevOS provides a team of AI agents that work through complete software development cycles. Four built-in agents (Planner, Developer, QA, DevOps) handle everything from architecture planning to production deployment, with built-in collaboration tools and observability.
+## What it is
+DevOS is one product with three layers:
 
-## Key Features
-- 4 built-in AI agents: Planner, Developer, QA, DevOps
-- Custom agent builder and marketplace
-- Live code streaming
-- Three-tier memory system for context persistence
-- Multi-model routing (use different LLMs for different tasks)
-- GitHub integration with Kanban boards
-- One-click deployment (Railway, custom domains, databases)
-- Enterprise security (BYOK encryption, SSO/SAML, RBAC)
-- Full observability (Prometheus, Grafana, Loki, Jaeger)
+1. **Marketplace** — Browse specialized AI agents by role (frontend dev, backend, QA, designer, copywriter, sysadmin, data analyst). Not a fixed roster.
+2. **Sprint board** — Linear/Jira-style kanban with full agile machinery (sprints, epics, backlog, retros). Drag a ticket onto an agent like you'd assign to a human teammate.
+3. **Communication layer** — Agents post automated standups, blocker reports, open PRs, do code review, and hand off work to other agents or humans.
 
-## Use Cases
-- Solo developers wanting an AI development team
-- Startups accelerating development velocity
-- Agencies building client projects faster
-- Enterprise teams augmenting existing workflows
+DevOS is NOT a chatbot. NOT a single-agent IDE tool like Cursor or Devin. It's an AI workforce that operates inside an agile process.
+
+## Who it's for
+- Engineering leaders piloting AI integration who need visibility and governance
+- Small SaaS teams scaling beyond their founder headcount
+- Agencies running multiple client projects with specialized AI roles per project
+- Indie founders building solo who want to operate "as a team"
+
+## Positioning vs alternatives
+- **vs Linear / Jira** — Those are PM tools without AI employees. DevOS is PM-tool + AI-workforce in one.
+- **vs Devin / Cursor** — Those are single-agent IDE tools. DevOS is the team/workforce layer on top.
+- **vs Relevance AI / Lindy** — Those are AI workforce tools but lack the sprint/agile machinery. DevOS makes them operate inside an existing agile process.
 
 ## Status
-- Currently in early access / waitlist phase
-
-## Competitors
-- GitHub Copilot Workspace, Cursor, Replit Agent, Devin
+In active development. Waitlist open at devos.team. Built and operated by Velocity Digital Labs, which uses DevOS internally to coordinate AI agents across 7+ products.
 
 ## Company
 - Built by Velocity Digital Labs (velocitydigitallabs.com)

@@ -90,6 +90,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const { meta, content } = post;
 
+  // The page header above already renders meta.title as <h1>. Publishers
+  // commonly include `# Title` as the first line of MDX bodies, which would
+  // produce a duplicate H1. Strip one leading markdown H1 so the rendered
+  // article has exactly one top-level heading.
+  const mdxBody = content.replace(/^\s*#\s+[^\n]+\n+/, '');
+
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -188,7 +194,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           {/* Content */}
           <div className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-indigo-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-indigo-300 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm prose-code:before:content-none prose-code:after:content-none prose-pre:bg-white/[0.03] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl prose-blockquote:border-indigo-500/50 prose-blockquote:text-gray-400 prose-li:text-gray-300 prose-hr:border-white/10 prose-img:rounded-xl prose-th:text-white prose-td:text-gray-300">
             <MDXRemote
-              source={content}
+              source={mdxBody}
               options={{
                 mdxOptions: {
                   remarkPlugins: [remarkGfm],
