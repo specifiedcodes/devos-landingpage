@@ -51,7 +51,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url,
       siteName: 'DevOS',
       publishedTime: meta.date,
-      authors: [meta.author],
+      // article:author intentionally omitted — Next.js emits it as a plain
+      // string from authors[], but FB's scraper expects a profile URL and
+      // rejects strings ("could not be parsed as type 'profile'"). The
+      // author is still rendered in the page body and baked into the OG
+      // image, so dropping the meta tag has no UX impact.
       section: meta.category,
       tags: meta.tags,
     },
