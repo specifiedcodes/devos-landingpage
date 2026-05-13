@@ -25,13 +25,20 @@ export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
 
+// Strip any brand suffix from publisher-provided titles. The layout-level
+// title.template already appends " | DevOS"; if the title coming in also
+// ends with the brand we'd render "X | DevOS | DevOS".
+function stripBrandSuffix(input: string): string {
+  return input.replace(/\s*[|–—\-]\s*DevOS\s*$/i, '').trim();
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: 'Post Not Found' };
 
   const { meta } = post;
-  const title = meta.seoTitle || meta.title;
+  const title = stripBrandSuffix(meta.seoTitle || meta.title);
   const description = meta.seoDescription || meta.excerpt;
   const url = `https://devos.team/blog/${slug}`;
 
