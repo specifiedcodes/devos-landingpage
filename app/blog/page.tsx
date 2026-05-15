@@ -99,13 +99,25 @@ export default function BlogPage() {
             </div>
           ) : (
             <div className="grid gap-5">
-              {posts.map((post) => (
+              {posts.map((post, idx) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group rounded-2xl glass hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300 p-6 md:p-8"
+                  className="group rounded-2xl glass hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300 overflow-hidden"
                 >
-                  <div className="flex flex-col gap-3">
+                  {/* Thumbnail — dynamic OG image generated per post */}
+                  <div className="relative w-full overflow-hidden border-b border-white/[0.06]" style={{ aspectRatio: '1200 / 630' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/blog/${post.slug}/opengraph-image`}
+                      alt={post.title}
+                      loading={idx === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-3 p-6 md:p-8">
                     <div className="flex items-center gap-3 text-xs">
                       <span
                         className={`font-code px-2.5 py-1 rounded-full border ${categoryColors[post.category] || 'text-gray-400 bg-white/5 border-white/10'}`}
