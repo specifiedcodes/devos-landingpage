@@ -47,6 +47,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  other: {
+    "facebook-domain-verification": "av0z2q8uyjvky1p0861hz3x59zde9o",
+  },
 };
 
 export default function RootLayout({
