@@ -110,6 +110,15 @@ async function main() {
   });
 
   try {
+    // 1. Apply schema (idempotent)
+    const schemaSql = fs.readFileSync(
+      path.join(process.cwd(), 'scripts', 'blog-schema.sql'),
+      'utf-8',
+    );
+    await pool.query(schemaSql);
+    console.log('Schema applied (blog_posts + indexes).');
+
+    // 2. Seed MDX content
     const files = collectMdxFiles();
     console.log(`Found ${files.length} MDX files to migrate.`);
 
