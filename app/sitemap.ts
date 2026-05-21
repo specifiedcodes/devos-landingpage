@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/blog';
 
 export const dynamic = 'force-dynamic';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://devos.team';
   const now = new Date();
 
@@ -17,7 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
   ];
 
-  const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+  const posts = await getAllPosts();
+  const blogPosts: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly',

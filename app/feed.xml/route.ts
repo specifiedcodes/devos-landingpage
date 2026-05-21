@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/blog';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   const baseUrl = 'https://devos.team';
 
   const items = posts

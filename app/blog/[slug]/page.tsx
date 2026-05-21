@@ -22,7 +22,8 @@ export const revalidate = 60;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+  const slugs = await getAllSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 // Strip any brand suffix from publisher-provided titles. The layout-level
@@ -34,7 +35,7 @@ function stripBrandSuffix(input: string): string {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) return { title: 'Post Not Found' };
 
   const { meta } = post;
@@ -85,7 +86,7 @@ const categoryColors: Record<string, string> = {
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
   const { meta, content } = post;
@@ -125,7 +126,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   // Related posts: same category, exclude current
-  const allPosts = getAllPosts();
+  const allPosts = await getAllPosts();
   const related = allPosts
     .filter((p) => p.slug !== slug && p.category === meta.category)
     .slice(0, 3);

@@ -47,9 +47,11 @@ const categoryColors: Record<string, string> = {
   Changelog: 'text-rose-400 bg-rose-500/10 border-rose-500/20',
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
-  const categories = getAllCategories();
+export default async function BlogPage() {
+  const [posts, categories] = await Promise.all([
+    getAllPosts(),
+    getAllCategories(),
+  ]);
 
   return (
     <div className="min-h-screen overflow-x-hidden">
