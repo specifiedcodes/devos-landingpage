@@ -22,18 +22,10 @@ export const revalidate = 60;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  // Railway's private network (DB at *.railway.internal) is unreachable
-  // during the build phase, so we can't enumerate slugs here when the
-  // backend is Postgres. dynamicParams=true + revalidate=60 mean any
-  // valid slug will render on-demand at runtime — pre-rendering is an
-  // optimization, not a correctness requirement.
-  try {
-    const slugs = await getAllSlugs();
-    return slugs.map((slug) => ({ slug }));
-  } catch (err) {
-    console.warn('[generateStaticParams] DB unreachable at build, deferring to runtime:', err);
-    return [];
-  }
+  // Facade already returns [] safely when DB is unreachable at build.
+  // dynamicParams=true + revalidate=60 handle on-demand render at runtime.
+  const slugs = await getAllSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 // Strip any brand suffix from publisher-provided titles. The layout-level
