@@ -5,9 +5,16 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { getAllPosts, getAllCategories } from '@/lib/blog';
 
-// ISR over force-dynamic — gives cacheable headers for crawlers/scrapers.
-// New posts appear within the revalidation window.
-export const revalidate = 60;
+// force-dynamic over ISR — eliminates the empty-prerender risk on
+// Railway. At build time the DB lives on Railway's private network
+// (waitlist-db.railway.internal) which is unreachable from the build
+// phase, so a prerendered /blog would ship empty until the first
+// runtime visitor triggers background revalidation. If that first
+// visitor is Googlebot/Bingbot, they index an empty page and don't
+// return for weeks. Always-fresh DB query per request makes the index
+// crawler-bulletproof. Individual posts stay on revalidate=60 because
+// FB OG scraping needs the cacheable headers there.
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Blog',
