@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/#security', label: 'Security' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export function Navbar() {
